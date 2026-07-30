@@ -1,461 +1,623 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Angre Katty Luissa - Portofolio</title>
-  
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Angre Katty Luissa</title>
     
-    .font-heading { font-family: 'Montserrat', sans-serif; }
-    .font-body { font-family: 'Inter', sans-serif; }
-    .navy-bg-solid { background-color: #0B1C3D; } 
-    .navy-text { color: #0B1C3D; }
-    .accent-color { color: #eab308; }
-    .accent-bg { background-color: #eab308; }
-    .scrollbar-hide::-webkit-scrollbar { display: none; }
-    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Montserrat:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            solid: '#0B1C3D',
+                            text: '#0B1C3D'
+                        },
+                        accent: {
+                            DEFAULT: '#eab308',
+                            bg: '#eab308'
+                        }
+                    },
+                    fontFamily: {
+                        heading: ['Montserrat', 'sans-serif'],
+                        body: ['Inter', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
 
-    /* Language Switcher Logic */
-    body.lang-en .id-only { display: none !important; }
-    body.lang-id .en-only { display: none !important; }
-  </style>
+    <!-- Custom CSS for Scrollbar -->
+    <style>
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+    <!-- React, ReactDOM, Babel, and Lucide Icons -->
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-slate-50 font-body text-slate-800 lang-id">
-
-  <nav class="fixed w-full flex justify-end p-4 z-50 pointer-events-none">
-    <button onclick="toggleLang()" class="pointer-events-auto bg-white/90 backdrop-blur shadow-md px-4 py-2 rounded-full text-sm font-semibold text-slate-800 hover:bg-slate-100 transition flex items-center gap-2 border border-slate-200">
-      <span class="id-only">Switch to English</span>
-      <span class="en-only">Beralih ke Bahasa</span>
-      <span class="id-only text-xs bg-[#0B1C3D] text-white px-2 py-1 rounded">EN</span>
-      <span class="en-only text-xs bg-[#0B1C3D] text-white px-2 py-1 rounded">ID</span>
-    </button>
-  </nav>
-
-  <section class="min-h-screen flex flex-col md:flex-row">
+<body class="bg-slate-50 font-body text-slate-800">
     
-    <div class="w-full md:w-[35%] navy-bg-solid text-white p-10 flex flex-col justify-center items-center md:items-start md:fixed md:h-screen z-10 relative overflow-hidden">
-      
-      <div class="absolute inset-0 z-0 pointer-events-none">
-         <div class="absolute inset-0 bg-gradient-to-b from-[#0B1C3D]/95 via-[#0B1C3D]/80 to-[#0B1C3D]/95 z-10"></div>
-         <img src="https://images.unsplash.com/photo-1513828742140-ccaa15f19be5?q=80&w=1000&auto=format&fit=crop" alt="PLTU Background" class="w-full h-full object-cover opacity-40 mix-blend-luminosity">
-      </div>
+    <!-- Root Element for React -->
+    <div id="root"></div>
 
-      <div class="relative z-20 flex flex-col items-center md:items-start w-full">
-        <div class="w-40 h-40 rounded-full border-4 border-slate-400 bg-slate-800 overflow-hidden mb-8 shadow-2xl relative flex-shrink-0">
-           <img src="1000015098.jpg" alt="Angre Katty Luissa" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://ui-avatars.com/api/?name=Angre+Katty&background=0D8ABC&color=fff&size=200';">
-        </div>
-        
-        <div class="space-y-6 w-full max-w-xs">
-          <div class="flex items-center gap-4 text-slate-200 hover:text-white transition group">
-            <i class="fa-solid fa-envelope accent-color text-xl w-5 text-center group-hover:scale-110 transition"></i>
-            <span class="font-body text-sm break-all font-medium">angre.katty@gmail.com</span>
-          </div>
-          <div class="flex items-center gap-4 text-slate-200 hover:text-white transition group">
-            <i class="fa-solid fa-phone accent-color text-xl w-5 text-center group-hover:scale-110 transition"></i>
-            <span class="font-body text-sm font-medium">+62 857-1470-0133</span>
-          </div>
-          <div class="flex items-center gap-4 text-slate-200 hover:text-white transition group">
-            <i class="fa-solid fa-location-dot accent-color text-xl w-5 text-center group-hover:scale-110 transition"></i>
-            <span class="id-only font-body text-sm font-medium">Kota Bekasi, Indonesia</span>
-            <span class="en-only font-body text-sm font-medium">Bekasi City, Indonesia</span>
-          </div>
-          <div class="flex items-center gap-4 text-slate-200 hover:text-white transition group">
-            <i class="fa-brands fa-linkedin accent-color text-xl w-5 text-center group-hover:scale-110 transition"></i>
-            <span class="font-body text-sm break-all font-medium leading-tight">linkedin.com/in/angre-katty-luissa-32802510b</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- React Application Code -->
+    <script type="text/babel">
+        const { useState, useEffect } = React;
 
-    <div class="w-full md:w-[65%] md:ml-[35%] bg-white p-10 lg:p-20 flex flex-col justify-center min-h-screen">
-      <h1 class="font-heading text-4xl lg:text-5xl font-extrabold navy-text tracking-tight mb-2 uppercase">ANGRE KATTY LUISSA</h1>
-      <h2 class="font-heading text-xl lg:text-2xl accent-color font-semibold mb-8">Project Administration Specialist</h2>
-      
-      <div class="w-16 h-1 bg-slate-200 mb-8"></div>
-      
-      <p class="id-only font-body text-slate-600 leading-relaxed text-lg mb-12 text-justify">
-        Staf Administrasi Proyek yang berorientasi pada detail dengan pengalaman lebih dari 6 tahun di PT PLN Indonesia Power (industri energi skala besar). Ahli dalam mengoperasikan SAP MM, penyusunan anggaran proyek (RAB/TOR/DMR), dan pelaporan keuangan komprehensif. Memiliki rekam jejak terbukti dalam mengelola siklus penagihan volume tinggi (300+ invoice/bulan) dan mencapai SLA 99%. Mahir menggunakan Microsoft Excel (Advanced) untuk rekonsiliasi data dan pelaporan neraca proyek dengan akurasi 100%. Memiliki pemahaman dasar mengenai Penghitungan GHG (Carbon Footprinting).
-      </p>
-      <p class="en-only font-body text-slate-600 leading-relaxed text-lg mb-12 text-justify">
-        A detail-oriented Project Administrator with over 6 years of experience in the large-scale energy industry at PT PLN Indonesia Power. Expert in operating SAP MM, project budget planning (RAB/TOR/DMR), and comprehensive financial reporting. Proven track record in managing high-volume billing cycles (300+ invoices/month) achieving a 99% SLA. Proficient in Advanced Microsoft Excel for data reconciliation and Project Balance Sheet reporting with 100% accuracy. Possesses basic understanding of GHG Accounting (Carbon Footprinting).
-      </p>
+        // Komponen Helper untuk me-render Icon dari Lucide JS di dalam React
+        const Icon = ({ name, className }) => {
+            useEffect(() => {
+                if (window.lucide) {
+                    window.lucide.createIcons();
+                }
+            });
+            return <i data-lucide={name} className={className}></i>;
+        };
 
-      <h3 class="font-heading text-2xl font-bold navy-text mb-6 flex items-center gap-2">
-        <i class="fa-solid fa-award accent-color"></i> <span class="id-only">Keahlian Utama</span><span class="en-only">Core Competencies</span>
-      </h3>
-      
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="p-4 border border-slate-100 rounded-lg bg-slate-50 hover:shadow-md transition group">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 flex items-center justify-center navy-bg-solid text-white rounded-md group-hover:bg-yellow-500 transition"><i class="fa-solid fa-gear"></i></div>
-            <h4 class="font-heading font-bold text-slate-800 text-sm"><span class="id-only">Sistem ERP</span><span class="en-only">ERP Systems</span></h4>
-          </div>
-          <p class="font-body text-xs text-slate-500 pl-11 leading-relaxed font-medium">SAP MM (PR, PO, Service Entry) - Zero Error Rate.</p>
-        </div>
-        <div class="p-4 border border-slate-100 rounded-lg bg-slate-50 hover:shadow-md transition group">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 flex items-center justify-center navy-bg-solid text-white rounded-md group-hover:bg-yellow-500 transition"><i class="fa-solid fa-chart-column"></i></div>
-            <h4 class="font-heading font-bold text-slate-800 text-sm"><span class="id-only">Analisis Data & Finansial</span><span class="en-only">Data & Financial Analysis</span></h4>
-          </div>
-          <p class="font-body text-xs text-slate-500 pl-11 leading-relaxed font-medium">Advanced Excel, Project Balance Sheet, Rekonsiliasi Data.</p>
-        </div>
-        <div class="p-4 border border-slate-100 rounded-lg bg-slate-50 hover:shadow-md transition group">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 flex items-center justify-center navy-bg-solid text-white rounded-md group-hover:bg-yellow-500 transition"><i class="fa-solid fa-file-lines"></i></div>
-            <h4 class="font-heading font-bold text-slate-800 text-sm"><span class="id-only">Kontrol Dokumen</span><span class="en-only">Document Control</span></h4>
-          </div>
-          <p class="font-body text-xs text-slate-500 pl-11 leading-relaxed font-medium">Budget Planning (RAB), TOR, DMR, Document Control.</p>
-        </div>
-        <div class="p-4 border border-slate-100 rounded-lg bg-slate-50 hover:shadow-md transition group">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 flex items-center justify-center navy-bg-solid text-white rounded-md group-hover:bg-yellow-500 transition"><i class="fa-solid fa-circle-check"></i></div>
-            <h4 class="font-heading font-bold text-slate-800 text-sm"><span class="id-only">Manajemen Invoice</span><span class="en-only">Invoice Management</span></h4>
-          </div>
-          <p class="id-only font-body text-xs text-slate-500 pl-11 leading-relaxed font-medium">Verifikasi Tagihan & Pajak, Monitoring SLA (300+ invoice/bln).</p>
-          <p class="en-only font-body text-xs text-slate-500 pl-11 leading-relaxed font-medium">Invoice & Tax Verification, SLA Monitoring (300+/month).</p>
-        </div>
-        <div class="p-4 border border-slate-100 rounded-lg bg-slate-50 hover:shadow-md transition group sm:col-span-2">
-          <div class="flex items-center gap-3 mb-2">
-            <div class="w-8 h-8 flex items-center justify-center navy-bg-solid text-white rounded-md group-hover:bg-yellow-500 transition"><i class="fa-solid fa-leaf"></i></div>
-            <h4 class="font-heading font-bold text-slate-800 text-sm">Tech & Sustainability</h4>
-          </div>
-          <p class="font-body text-xs text-slate-500 pl-11 leading-relaxed font-medium">Microsoft 365, GHG Accounting Basics (Scope 1/2/3).</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        // --- CONTENT DATA SOURCE ---
+        const content = {
+          id: {
+            nav: { lang: "EN", switch: "Switch to English" },
+            profile: {
+              name: "ANGRE KATTY LUISSA",
+              title: "Project Administration Specialist",
+              summary: "Staf Administrasi Proyek yang berorientasi pada detail dengan pengalaman lebih dari 6 tahun di PT PLN Indonesia Power (industri energi skala besar). Ahli dalam mengoperasikan SAP MM, penyusunan anggaran proyek (RAB/TOR/DMR), dan pelaporan keuangan komprehensif. Memiliki rekam jejak terbukti dalam mengelola siklus penagihan volume tinggi (300+ invoice/bulan) dan mencapai SLA 99%. Mahir menggunakan Microsoft Excel (Advanced) untuk rekonsiliasi data dan pelaporan neraca proyek dengan akurasi 100%. Memiliki pemahaman dasar mengenai Penghitungan GHG (Carbon Footprinting).",
+              location: "Kota Bekasi, Indonesia",
+              skills: "Keahlian Utama",
+              skillList: [
+                { title: "Sistem ERP", desc: "SAP MM (PR, PO, Service Entry) - Zero Error Rate.", icon: "settings" },
+                { title: "Analisis Data & Finansial", desc: "Advanced Excel, Project Balance Sheet, Rekonsiliasi Data.", icon: "bar-chart" },
+                { title: "Kontrol Dokumen", desc: "Budget Planning (RAB), TOR, DMR, Document Control.", icon: "layout" },
+                { title: "Manajemen Invoice", desc: "Verifikasi Tagihan & Pajak, Monitoring SLA (300+ invoice/bln).", icon: "check-circle" },
+                { title: "Tech & Sustainability", desc: "Microsoft 365, GHG Accounting Basics (Scope 1/2/3).", icon: "leaf" }
+              ]
+            },
+            cs1: {
+              title: "Fokus Pengalaman 1: Manajemen Tagihan Volume Tinggi",
+              desc: "Mengelola siklus penuh verifikasi tagihan dan kepatuhan kontrak untuk pasokan energi primer di Divisi Primary Energy Planning and Control I.",
+              resp: [
+                "Verifikasi Tagihan & Kepatuhan: Memeriksa kelengkapan dokumen dari 50+ mitra pemasok.",
+                "Pencapaian SLA: Memastikan proses verifikasi selesai dalam target 1-3 hari.",
+                "Monitoring Finansial: Melacak status pembayaran dan arus kas menggunakan Advanced Excel."
+              ],
+              metrics: [
+                { val: "300+", label: "Invoice Diproses / Bulan" },
+                { val: "16", label: "PLTU Ditangani" },
+                { val: "99%", label: "Tingkat Pencapaian SLA" }
+              ]
+            },
+            cs2: {
+              title: "Fokus Pengalaman 2: Administrasi Pengadaan SAP MM",
+              desc: "Menangani seluruh rantai administrasi pengadaan barang dan jasa (procurement lifecycle) untuk mendukung operasional proyek.",
+              resp: [
+                "Purchase Requisition (PR): Input permintaan pembelian berdasarkan perencanaan teknis.",
+                "Purchase Order (PO): Memproses penerbitan PO resmi ke vendor via SAP MM.",
+                "Service Entry (SE): Verifikasi penyelesaian jasa/barang sebagai dasar pembayaran."
+              ],
+              accuracy: "Akurasi 100% (Zero-Error Rate) di SAP MM",
+              flowSteps: ["Perencanaan (RAB/TOR)", "Input PR (SAP)", "Penerbitan PO (SAP)", "Service Entry (SE)", "Verifikasi Invoice"]
+            },
+            cs3: {
+              title: "Fokus Pengalaman 3: Pelaporan & Modernisasi Arsip",
+              desc: "Bertanggung jawab atas pelaporan kesehatan keuangan proyek, rekonsiliasi data, dan optimalisasi sistem penyimpanan dokumen digital.",
+              resp: [
+                "Pelaporan Komprehensif: Menyusun Project Balance Sheet, Laporan Mingguan/Bulanan.",
+                "Rekonsiliasi Data: Pencocokan data biaya bahan bakar dan transportasi secara berkala.",
+                "Arsip Digital: Modernisasi sistem filing menggunakan ekosistem Microsoft 365 (SharePoint/OneDrive)."
+              ],
+              chartLabel: "Efisiensi Temu Kembali Dokumen via Cloud System",
+              reportsLabel: "Jenis Laporan & Data yang Dikelola:"
+            },
+            cs4: {
+              title: "Fokus Pengalaman 4: Operasional Sekretaris Eksekutif",
+              desc: "Bertanggung jawab penuh atas kelancaran aktivitas harian dan operasional administratif untuk jajaran manajemen tingkat tinggi (Vice President) pada Divisi Energi Primer dan Settlement II.",
+              resp: [
+                { title: "Manajemen Agenda Eksekutif", text: "Mengatur, menjadwalkan, dan menyelaraskan kalender rapat serta agenda harian Vice President dengan tingkat fleksibilitas dan akurasi tinggi.", icon: "calendar" },
+                { title: "Koordinasi Rapat Korporat", text: "Menyelenggarakan rapat koordinasi teknis internal maupun eksternal, termasuk menyusun risalah rapat (Minutes of Meeting) yang komprehensif sebagai acuan tindak lanjut tim.", icon: "users" },
+                { title: "Pengaturan Perjalanan Dinas", text: "Mengelola seluruh logistik perjalanan dinas (travel management), akomodasi, serta penyusunan laporan pertanggungjawaban biaya perjalanan dinas manajemen.", icon: "plane" },
+                { title: "Hubungan Pemangku Kepentingan", text: "Bertindak sebagai pintu gerbang komunikasi utama yang profesional antara pihak eksternal, mitra vendor, dan jajaran internal divisi.", icon: "handshake" }
+              ],
+              impacts: [
+                { title: "Efisiensi Jadwal Kerja 100%", text: "Berhasil meminimalkan bentrokan jadwal rapat manajemen melalui konfirmasi berlapis dan manajemen waktu yang taktis." },
+                { title: "Arsip Risalah Rapat yang Andal", text: "Memastikan seluruh keputusan strategis rapat terekam dengan jelas, mempercepat eksekusi instruksi manajemen oleh tim operasional proyek." }
+              ],
+              highlight: "Direct Executive Support to the Vice President of Divisi Energi Primer dan Settlement II"
+            },
+            cert: {
+              title: "Pendidikan & Sertifikasi Unggulan",
+              desc: "Rekam jejak akademik, pelatihan teknologi, dan pengalaman organisasi.",
+              eduTitle: "Riwayat Pendidikan",
+              eduList: [
+                { level: "Sarjana (S1)", major: "Manajemen", uni: "Universitas Pancasila", period: "Sep 2017 - Feb 2020", gpa: "3.43 / 4.00" },
+                { level: "Diploma III (D3)", major: "Administrasi Perkantoran & Sekretari", uni: "Universitas Indonesia", period: "Agu 2013 - Jul 2016", gpa: "3.39 / 4.00" }
+              ],
+              langTitle: "Bahasa",
+              langList: [
+                "IELTS Preparation Class (Skor Overall 7.0) - ELF Education (April 2023)",
+                "TOEFL ITP Test (Skor 483) - Lembaga Bahasa Internasional FBI UI (Agustus 2019)"
+              ],
+              techTitle: "Teknologi & Bisnis",
+              techList: [
+                "Introduction to Greenhouse Gas Accounting for IT - Cisco Networking Academy (Juli 2026)",
+                "Coding Camp Software Engineering - PT Revolusi Cita Edukasi (Revou) (Juli 2025)",
+                "Python - KOMINFO RI (April 2024)",
+                "Intro to Digital Marketing - PT Revolusi Cita Edukasi (Revou) (Maret 2024)",
+                "Introduction to Data Science - Cisco Networking Academy (Maret 2024)",
+                "Intro to Data Analytics - PT Revolusi Cita Edukasi (Revou) (Januari 2024)",
+                "Intro to Product Management - PT Revolusi Cita Edukasi (Revou) (Maret 2022)",
+                "Web Development Path (Ruby on Rails) - KOMINFO RI (September 2021)",
+                "Zahir Accounting 5 - PT Zahir Internasional (Mei 2015)"
+              ],
+              orgTitle: "Pengalaman Organisasi",
+              orgList: [
+                "Staf Logistik dan Komunikasi, Resimen Mahasiswa Universitas Indonesia (MENWA UI) angkatan Jenawi (Maret 2015 - Agustus 2016)",
+                "Ketua Panitia, Kuliah Umum APS \"Polishing Your Professional Image\" di APS UI (Oktober 2014)",
+                "Staf Humas, Publikasi dan Dokumentasi, Beauty Class by Wardah - APS UI (April 2015)",
+                "Staf Media Partner, Indonesia Youth Preneur Festival (Maret 2014)"
+              ]
+            }
+          },
+          // --- ENGLISH CONTENT VERSION ---
+          en: {
+            nav: { lang: "ID", switch: "Beralih ke Bahasa" },
+            profile: {
+              name: "ANGRE KATTY LUISSA",
+              title: "Project Administration Specialist",
+              summary: "A detail-oriented Project Administrator with over 6 years of experience in the large-scale energy industry at PT PLN Indonesia Power. Expert in operating SAP MM, project budget planning (RAB/TOR/DMR), and comprehensive financial reporting. Proven track record in managing high-volume billing cycles (300+ invoices/month) achieving a 99% SLA. Proficient in Advanced Microsoft Excel for data reconciliation and Project Balance Sheet reporting with 100% accuracy. Possesses basic understanding of GHG Accounting (Carbon Footprinting).",
+              location: "Bekasi City, Indonesia",
+              skills: "Core Competencies",
+              skillList: [
+                { title: "ERP Systems", desc: "SAP MM (PR, PO, Service Entry) - Zero Error Rate.", icon: "settings" },
+                { title: "Data & Financial Analysis", desc: "Advanced Excel, Project Balance Sheet, Data Reconciliation.", icon: "bar-chart" },
+                { title: "Document Control", desc: "Budget Planning (RAB), TOR, DMR, Filing System.", icon: "layout" },
+                { title: "Invoice Management", desc: "Invoice & Tax Verification, SLA Monitoring (300+/month).", icon: "check-circle" },
+                { title: "Tech & Sustainability", desc: "Microsoft 365, GHG Accounting Basics (Scope 1/2/3).", icon: "leaf" }
+              ]
+            },
+            cs1: {
+              title: "Experience Focus 1: High-Volume Invoice Management",
+              desc: "Managed the full cycle of invoice verification and contract compliance for primary energy supplies within the Primary Energy Planning and Control I Division.",
+              resp: [
+                "Invoice verification & Compliance: Checked documentation completeness from 50+ suppliers.",
+                "SLA Achievement: Ensured verification process met the 1-3 day target.",
+                "Financial Monitoring: Tracked payment status and cash flow using Advanced Excel."
+              ],
+              metrics: [
+                { val: "300+", label: "Invoices Processed / Month" },
+                { val: "16", label: "Power Plants Managed" },
+                { val: "99%", label: "SLA Achievement Rate" }
+              ]
+            },
+            cs2: {
+              title: "Experience Focus 2: SAP MM Procurement Admin",
+              desc: "Handled the end-to-end procurement administration lifecycle to support operational project readiness.",
+              resp: [
+                "Purchase Requisition (PR): Inputted material requests based on technical planning.",
+                "Purchase Order (PO): Processed official PO issuance to vendors via SAP MM.",
+                "Service Entry (SE): Verified service/goods completion as a payment basis."
+              ],
+              accuracy: "100% Accuracy (Zero-Error Rate) in SAP MM",
+              flowSteps: ["Planning (RAB/TOR)", "Input PR (SAP)", "Issue PO (SAP)", "Service Entry (SE)", "Invoice Verification"]
+            },
+            cs3: {
+              title: "Experience Focus 3: Reporting & Archive Modernization",
+              desc: "Accountable for project financial health reporting, data reconciliation, and optimizing digital document storage systems.",
+              resp: [
+                "Comprehensive Reporting: Compiled Project Balance Sheets, Weekly/Monthly Reports.",
+                "Data Reconciliation: Periodic matching of fuel and transportation cost data.",
+                "Digital Archiving: Modernized filing systems using Microsoft 365 ecosystem."
+              ],
+              chartLabel: "Document Retrieval Efficiency via Cloud System",
+              reportsLabel: "Managed Reports & Data Types:"
+            },
+            cs4: {
+              title: "Experience Focus 4: Executive Secretarial Operations",
+              desc: "Accountable for driving administrative excellence and operational continuity for high-level management (Vice President) within the Primary Energy and Settlement II Division.",
+              resp: [
+                { title: "Executive Calendar Management", text: "Scheduled, organized, and streamlined complex daily calendars and corporate appointments for the Vice President with absolute accuracy.", icon: "calendar" },
+                { title: "Corporate Meeting Coordination", text: "Moderated internal and external high-stakes technical meetings, producing comprehensive Minutes of Meetings (MoM) to track actionable progress.", icon: "users" },
+                { title: "Travel & Logistics", text: "Managed end-to-end corporate travel itineraries, accommodations, and handled accurate expense report reconciliations for executive business trips.", icon: "plane" },
+                { title: "Stakeholder Relations", text: "Served as a highly professional primary liaison managing communication pipelines between external vendors, corporate partners, and internal division sectors.", icon: "handshake" }
+              ],
+              impacts: [
+                { title: "100% Schedule Efficiency", text: "Successfully eliminated calendar conflicts through systematic confirmation workflows and tactical time management strategies." },
+                { title: "Reliable Meeting Archives", text: "Guaranteed that every strategic board decision was clearly documented, speeding up project team execution of management directives." }
+              ],
+              highlight: "Direct Executive Support to the Vice President of Primary Energy and Settlement II"
+            },
+            cert: {
+              title: "Education & Top Certifications",
+              desc: "Academic track record, technology training, and organizational experience.",
+              eduTitle: "Education History",
+              eduList: [
+                { level: "Bachelor (S1)", major: "Management", uni: "Universitas Pancasila", period: "Sep 2017 - Feb 2020", gpa: "3.43 / 4.00" },
+                { level: "Diploma (D3)", major: "Office Administration & Secretary", uni: "Universitas Indonesia", period: "Aug 2013 - Jul 2016", gpa: "3.39 / 4.00" }
+              ],
+              langTitle: "Languages",
+              langList: [
+                "IELTS Preparation Class (Overall Score 7.0) - ELF Education (April 2023)",
+                "TOEFL ITP Test (Score 483) - Lembaga Bahasa Internasional FBI UI (August 2019)"
+              ],
+              techTitle: "Technology & Business",
+              techList: [
+                "Introduction to Greenhouse Gas Accounting for IT - Cisco Networking Academy (July 2026)",
+                "Coding Camp Software Engineering - PT Revolusi Cita Edukasi (Revou) (July 2025)",
+                "Python - KOMINFO RI (April 2024)",
+                "Intro to Digital Marketing - PT Revolusi Cita Edukasi (Revou) (March 2024)",
+                "Introduction to Data Science - Cisco Networking Academy (March 2024)",
+                "Intro to Data Analytics - PT Revolusi Cita Edukasi (Revou) (Jan 2024)",
+                "Intro to Product Management - PT Revolusi Cita Edukasi (Revou) (March 2022)",
+                "Web Development Path (Ruby on Rails) - KOMINFO RI (September 2021)",
+                "Zahir Accounting 5 - PT Zahir Internasional (May 2015)"
+              ],
+              orgTitle: "Organizational Experience",
+              orgList: [
+                "Logistics and Communication Staff, Student Regiment Universitas Indonesia (MENWA UI) Jenawi (March 2015 - August 2016)",
+                "Committee Chairperson, General Lecture \"Polishing Your Professional Image\" at APS UI (October 2014)",
+                "PR, Publication & Documentation Staff, Beauty Class by Wardah - APS UI (April 2015)",
+                "Media Partner Staff, Indonesia Youth Preneur Festival (March 2014)"
+              ]
+            }
+          }
+        };
 
-  <section class="min-h-screen md:ml-[35%] bg-slate-50 p-10 lg:p-20 flex flex-col justify-center border-t border-slate-200">
-    <h2 class="font-heading text-3xl font-bold navy-text mb-4">
-      <span class="id-only">Fokus Pengalaman 1: Manajemen Tagihan Volume Tinggi</span>
-      <span class="en-only">Experience Focus 1: High-Volume Invoice Management</span>
-    </h2>
-    <p class="font-body text-slate-600 text-lg mb-8 max-w-3xl">
-      <span class="id-only">Mengelola siklus penuh verifikasi tagihan dan kepatuhan kontrak untuk pasokan energi primer di Divisi Primary Energy Planning and Control I.</span>
-      <span class="en-only">Managed the full cycle of invoice verification and contract compliance for primary energy supplies within the Primary Energy Planning and Control I Division.</span>
-    </p>
-    
-    <div class="mb-12">
-      <ul class="space-y-4 id-only">
-        <li class="flex gap-4 items-start"><i class="fa-solid fa-circle-check accent-color mt-1 text-xl"></i><span class="font-body text-slate-700 leading-relaxed">Verifikasi Tagihan & Kepatuhan: Memeriksa kelengkapan dokumen dari 50+ mitra pemasok.</span></li>
-        <li class="flex gap-4 items-start"><i class="fa-solid fa-circle-check accent-color mt-1 text-xl"></i><span class="font-body text-slate-700 leading-relaxed">Pencapaian SLA: Memastikan proses verifikasi selesai dalam target 1-3 hari.</span></li>
-        <li class="flex gap-4 items-start"><i class="fa-solid fa-circle-check accent-color mt-1 text-xl"></i><span class="font-body text-slate-700 leading-relaxed">Monitoring Finansial: Melacak status pembayaran dan arus kas menggunakan Advanced Excel.</span></li>
-      </ul>
-      <ul class="space-y-4 en-only">
-        <li class="flex gap-4 items-start"><i class="fa-solid fa-circle-check accent-color mt-1 text-xl"></i><span class="font-body text-slate-700 leading-relaxed">Invoice verification & Compliance: Checked documentation completeness from 50+ suppliers.</span></li>
-        <li class="flex gap-4 items-start"><i class="fa-solid fa-circle-check accent-color mt-1 text-xl"></i><span class="font-body text-slate-700 leading-relaxed">SLA Achievement: Ensured verification process met the 1-3 day target.</span></li>
-        <li class="flex gap-4 items-start"><i class="fa-solid fa-circle-check accent-color mt-1 text-xl"></i><span class="font-body text-slate-700 leading-relaxed">Financial Monitoring: Tracked payment status and cash flow using Advanced Excel.</span></li>
-      </ul>
-    </div>
+        function App() {
+          const [lang, setLang] = useState('id');
+          const t = content[lang];
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="bg-white rounded-xl shadow-lg p-8 border-t-4 border-yellow-500 text-center flex flex-col justify-center items-center transform hover:-translate-y-1 transition duration-300">
-        <span class="font-heading text-5xl font-extrabold accent-color mb-3">300+</span>
-        <span class="id-only font-body text-sm font-semibold text-slate-500 uppercase tracking-wide">Invoice Diproses / Bulan</span>
-        <span class="en-only font-body text-sm font-semibold text-slate-500 uppercase tracking-wide">Invoices Processed / Month</span>
-      </div>
-      <div class="bg-white rounded-xl shadow-lg p-8 border-t-4 border-yellow-500 text-center flex flex-col justify-center items-center transform hover:-translate-y-1 transition duration-300">
-        <span class="font-heading text-5xl font-extrabold accent-color mb-3">16</span>
-        <span class="id-only font-body text-sm font-semibold text-slate-500 uppercase tracking-wide">PLTU Ditangani</span>
-        <span class="en-only font-body text-sm font-semibold text-slate-500 uppercase tracking-wide">Power Plants Managed</span>
-      </div>
-      <div class="bg-white rounded-xl shadow-lg p-8 border-t-4 border-yellow-500 text-center flex flex-col justify-center items-center transform hover:-translate-y-1 transition duration-300">
-        <span class="font-heading text-5xl font-extrabold accent-color mb-3">99%</span>
-        <span class="id-only font-body text-sm font-semibold text-slate-500 uppercase tracking-wide">Tingkat Pencapaian SLA</span>
-        <span class="en-only font-body text-sm font-semibold text-slate-500 uppercase tracking-wide">SLA Achievement Rate</span>
-      </div>
-    </div>
-  </section>
+          return (
+            <div className="min-h-screen">
+              {/* Navigation (Language Switcher) */}
+              <nav className="fixed w-full flex justify-end p-4 z-50 pointer-events-none">
+                <button 
+                  onClick={() => setLang(lang === 'id' ? 'en' : 'id')}
+                  className="pointer-events-auto bg-white/90 backdrop-blur shadow-md px-4 py-2 rounded-full text-sm font-semibold text-slate-800 hover:bg-slate-100 transition flex items-center gap-2 border border-slate-200"
+                >
+                  {t.nav.switch} <span className="text-xs bg-navy-solid text-white px-2 py-1 rounded">{t.nav.lang}</span>
+                </button>
+              </nav>
 
-  <section class="min-h-screen md:ml-[35%] bg-white p-10 lg:p-20 flex flex-col justify-center border-t border-slate-200">
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
-      <div>
-        <h2 class="font-heading text-3xl font-bold navy-text mb-4">
-          <span class="id-only">Fokus Pengalaman 2: Administrasi Pengadaan SAP MM</span>
-          <span class="en-only">Experience Focus 2: SAP MM Procurement Admin</span>
-        </h2>
-        <p class="font-body text-slate-600 text-lg mb-8">
-          <span class="id-only">Menangani seluruh rantai administrasi pengadaan barang dan jasa (procurement lifecycle) untuk mendukung operasional proyek.</span>
-          <span class="en-only">Handled the end-to-end procurement administration lifecycle to support operational project readiness.</span>
-        </p>
-        
-        <ul class="space-y-6 id-only">
-          <li class="flex gap-4 items-start"><div class="w-8 h-8 rounded-full navy-bg-solid text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">1</div><span class="font-body text-slate-700 leading-relaxed">Purchase Requisition (PR): Input permintaan pembelian berdasarkan perencanaan teknis.</span></li>
-          <li class="flex gap-4 items-start"><div class="w-8 h-8 rounded-full navy-bg-solid text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">2</div><span class="font-body text-slate-700 leading-relaxed">Purchase Order (PO): Memproses penerbitan PO resmi ke vendor via SAP MM.</span></li>
-          <li class="flex gap-4 items-start"><div class="w-8 h-8 rounded-full navy-bg-solid text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">3</div><span class="font-body text-slate-700 leading-relaxed">Service Entry (SE): Verifikasi penyelesaian jasa/barang sebagai dasar pembayaran.</span></li>
-        </ul>
-        <ul class="space-y-6 en-only">
-          <li class="flex gap-4 items-start"><div class="w-8 h-8 rounded-full navy-bg-solid text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">1</div><span class="font-body text-slate-700 leading-relaxed">Purchase Requisition (PR): Inputted material requests based on technical planning.</span></li>
-          <li class="flex gap-4 items-start"><div class="w-8 h-8 rounded-full navy-bg-solid text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">2</div><span class="font-body text-slate-700 leading-relaxed">Purchase Order (PO): Processed official PO issuance to vendors via SAP MM.</span></li>
-          <li class="flex gap-4 items-start"><div class="w-8 h-8 rounded-full navy-bg-solid text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">3</div><span class="font-body text-slate-700 leading-relaxed">Service Entry (SE): Verified service/goods completion as a payment basis.</span></li>
-        </ul>
-      </div>
+              {/* PAGE 1: Profile */}
+              <section className="min-h-screen flex flex-col md:flex-row">
+                {/* Left Column (Sidebar - Sticky) */}
+                <div className="w-full md:w-[35%] bg-navy-solid text-white p-10 flex flex-col justify-center items-center md:items-start md:fixed md:h-screen z-10 relative overflow-hidden">
+                  
+                  {/* PLTU / Power Plant Watermark Background */}
+                  <div className="absolute inset-0 z-0 pointer-events-none">
+                     <div className="absolute inset-0 bg-gradient-to-b from-navy-solid/95 via-navy-solid/80 to-navy-solid/95 z-10"></div>
+                     <img 
+                        src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?q=80&w=800&auto=format&fit=crop"
+                        alt="PLTU Power Plant Background" 
+                        className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
+                     />
+                  </div>
 
-      <div class="bg-slate-50 p-8 rounded-2xl shadow-inner border border-slate-100 flex flex-col items-center">
-        <h3 class="font-heading text-sm font-bold text-center text-slate-400 uppercase tracking-widest mb-6">Workflow SAP MM</h3>
-        
-        <div class="flex flex-col w-full max-w-xs space-y-2">
-          <div class="border-2 font-bold p-4 text-center rounded-lg shadow-sm font-heading text-sm transition bg-white border-slate-800 text-slate-800"><span class="id-only">Perencanaan (RAB/TOR)</span><span class="en-only">Planning (RAB/TOR)</span></div>
-          <div class="flex justify-center text-slate-400"><i class="fa-solid fa-arrow-down"></i></div>
-          
-          <div class="border-2 font-bold p-4 text-center rounded-lg shadow-sm font-heading text-sm transition bg-blue-50 border-[#0B1C3D] text-[#0B1C3D]">Input PR (SAP)</div>
-          <div class="flex justify-center text-slate-400"><i class="fa-solid fa-arrow-down"></i></div>
-          
-          <div class="border-2 font-bold p-4 text-center rounded-lg shadow-sm font-heading text-sm transition bg-blue-50 border-[#0B1C3D] text-[#0B1C3D]"><span class="id-only">Penerbitan PO (SAP)</span><span class="en-only">Issue PO (SAP)</span></div>
-          <div class="flex justify-center text-slate-400"><i class="fa-solid fa-arrow-down"></i></div>
-          
-          <div class="border-2 font-bold p-4 text-center rounded-lg shadow-sm font-heading text-sm transition bg-white border-slate-800 text-slate-800">Service Entry (SE)</div>
-          <div class="flex justify-center text-slate-400"><i class="fa-solid fa-arrow-down"></i></div>
-          
-          <div class="border-2 font-bold p-4 text-center rounded-lg shadow-sm font-heading text-sm transition bg-white border-slate-800 text-slate-800"><span class="id-only">Verifikasi Invoice</span><span class="en-only">Invoice Verification</span></div>
-        </div>
+                  <div className="relative z-20 flex flex-col items-center md:items-start w-full">
+                    {/* PHOTO */}
+                    <div className="w-40 h-40 rounded-full border-4 border-slate-400 bg-slate-800 overflow-hidden mb-8 shadow-2xl relative">
+                       <img 
+                         src="1000015098.jpg"
+                         alt="Angre Katty Luissa" 
+                         className="w-full h-full object-cover" 
+                         onError={(e) => { 
+                           e.target.onerror = null; 
+                           e.target.src = 'https://ui-avatars.com/api/?name=Angre+Katty&background=0D8ABC&color=fff&size=200'; 
+                         }}
+                       />
+                    </div>
+                    
+                    <div className="space-y-6 w-full max-w-xs">
+                      <div className="flex items-center gap-4 text-slate-200 hover:text-white transition group">
+                        <Icon name="mail" className="w-5 h-5 text-accent flex-shrink-0 group-hover:scale-110 transition" />
+                        <span className="font-body text-sm break-all font-medium">angre.katty@gmail.com</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-slate-200 hover:text-white transition group">
+                        <Icon name="phone" className="w-5 h-5 text-accent flex-shrink-0 group-hover:scale-110 transition" />
+                        <span className="font-body text-sm font-medium">+62 857-1470-0133</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-slate-200 hover:text-white transition group">
+                        <Icon name="map-pin" className="w-5 h-5 text-accent flex-shrink-0 group-hover:scale-110 transition" />
+                        <span className="font-body text-sm font-medium">{t.profile.location}</span>
+                      </div>
+                      <div className="flex items-center gap-4 text-slate-200 hover:text-white transition group">
+                        <Icon name="linkedin" className="w-5 h-5 text-accent flex-shrink-0 group-hover:scale-110 transition" />
+                        <span className="font-body text-sm break-all font-medium leading-tight">linkedin.com/in/angre-katty-luissa-32802510b</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
-        <div class="mt-8 bg-green-50 text-green-700 px-4 py-3 rounded-lg font-bold text-sm flex items-center gap-2 border border-green-200 shadow-sm">
-          <i class="fa-solid fa-circle-check"></i>
-          <span class="id-only">Akurasi 100% (Zero-Error Rate) di SAP MM</span>
-          <span class="en-only">100% Accuracy (Zero-Error Rate) in SAP MM</span>
-        </div>
-      </div>
-    </div>
-  </section>
+                {/* Right Column (Content) */}
+                <div className="w-full md:w-[65%] md:ml-[35%] bg-white p-10 lg:p-20 flex flex-col justify-center min-h-screen">
+                  <h1 className="font-heading text-4xl lg:text-5xl font-extrabold text-navy-text tracking-tight mb-2 uppercase">
+                    {t.profile.name}
+                  </h1>
+                  <h2 className="font-heading text-xl lg:text-2xl text-accent font-semibold mb-8">
+                    {t.profile.title}
+                  </h2>
+                  
+                  <div className="w-16 h-1 bg-slate-200 mb-8"></div>
+                  
+                  <p className="font-body text-slate-600 leading-relaxed text-lg mb-12 text-justify">
+                    {t.profile.summary}
+                  </p>
 
-  <section class="min-h-screen md:ml-[35%] bg-slate-50 p-10 lg:p-20 flex flex-col justify-center border-t border-slate-200">
-    <h2 class="font-heading text-3xl font-bold navy-text mb-12">
-      <span class="id-only">Fokus Pengalaman 3: Pelaporan & Modernisasi Arsip</span>
-      <span class="en-only">Experience Focus 3: Reporting & Archive Modernization</span>
-    </h2>
-    
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-      <div>
-        <p class="font-body text-slate-600 text-lg mb-8 id-only">Bertanggung jawab atas pelaporan kesehatan keuangan proyek, rekonsiliasi data, dan optimalisasi sistem penyimpanan dokumen digital.</p>
-        <p class="font-body text-slate-600 text-lg mb-8 en-only">Accountable for project financial health reporting, data reconciliation, and optimizing digital document storage systems.</p>
-        
-        <ul class="space-y-4 mb-8 id-only">
-          <li class="flex gap-4 items-start"><div class="w-2 h-2 rounded-full accent-bg mt-2.5 flex-shrink-0"></div><span class="font-body text-slate-700 leading-relaxed">Pelaporan Komprehensif: Menyusun Project Balance Sheet, Laporan Mingguan/Bulanan.</span></li>
-          <li class="flex gap-4 items-start"><div class="w-2 h-2 rounded-full accent-bg mt-2.5 flex-shrink-0"></div><span class="font-body text-slate-700 leading-relaxed">Rekonsiliasi Data: Pencocokan data biaya bahan bakar dan transportasi secara berkala.</span></li>
-          <li class="flex gap-4 items-start"><div class="w-2 h-2 rounded-full accent-bg mt-2.5 flex-shrink-0"></div><span class="font-body text-slate-700 leading-relaxed">Arsip Digital: Modernisasi sistem filing menggunakan ekosistem Microsoft 365.</span></li>
-        </ul>
-        <ul class="space-y-4 mb-8 en-only">
-          <li class="flex gap-4 items-start"><div class="w-2 h-2 rounded-full accent-bg mt-2.5 flex-shrink-0"></div><span class="font-body text-slate-700 leading-relaxed">Comprehensive Reporting: Compiled Project Balance Sheets, Weekly/Monthly Reports.</span></li>
-          <li class="flex gap-4 items-start"><div class="w-2 h-2 rounded-full accent-bg mt-2.5 flex-shrink-0"></div><span class="font-body text-slate-700 leading-relaxed">Data Reconciliation: Periodic matching of fuel and transportation cost data.</span></li>
-          <li class="flex gap-4 items-start"><div class="w-2 h-2 rounded-full accent-bg mt-2.5 flex-shrink-0"></div><span class="font-body text-slate-700 leading-relaxed">Digital Archiving: Modernized filing systems using Microsoft 365 ecosystem.</span></li>
-        </ul>
+                  <h3 className="font-heading text-2xl font-bold text-navy-text mb-6 flex items-center gap-2">
+                    <Icon name="award" className="w-6 h-6 text-accent" /> {t.profile.skills}
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {t.profile.skillList.map((skill, idx) => (
+                      <div key={idx} className="p-4 border border-slate-100 rounded-lg bg-slate-50 hover:shadow-md transition group">
+                        <div className="flex items-center gap-3 mb-2">
+                          <div className="p-2 bg-navy-solid text-white rounded-md group-hover:bg-yellow-500 transition">
+                            <Icon name={skill.icon} className="w-5 h-5" />
+                          </div>
+                          <h4 className="font-heading font-bold text-slate-800 text-sm">{skill.title}</h4>
+                        </div>
+                        <p className="font-body text-xs text-slate-500 pl-11 leading-relaxed font-medium">{skill.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </section>
 
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-          <h4 class="font-heading font-bold navy-text text-sm mb-4 flex items-center gap-2">
-            <i class="fa-solid fa-database accent-color"></i> 
-            <span class="id-only">Jenis Laporan & Data yang Dikelola:</span>
-            <span class="en-only">Managed Reports & Data Types:</span>
-          </h4>
-          <div class="grid grid-cols-2 gap-3">
-            <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2 rounded border border-slate-100"><i class="fa-solid fa-database text-slate-400"></i> Project Balance Sheet</div>
-            <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2 rounded border border-slate-100"><i class="fa-solid fa-database text-slate-400"></i> Weekly Progress Info</div>
-            <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2 rounded border border-slate-100"><i class="fa-solid fa-database text-slate-400"></i> Monthly Cost Recon</div>
-            <div class="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2 rounded border border-slate-100"><i class="fa-solid fa-database text-slate-400"></i> GHG/Carbon Data</div>
-          </div>
-        </div>
-      </div>
+              {/* PAGE 2: Focus Experience 1 */}
+              <section className="min-h-screen md:ml-[35%] bg-slate-50 p-10 lg:p-20 flex flex-col justify-center border-t border-slate-200">
+                <h2 className="font-heading text-3xl font-bold text-navy-text mb-4">{t.cs1.title}</h2>
+                <p className="font-body text-slate-600 text-lg mb-8 max-w-3xl">{t.cs1.desc}</p>
+                
+                <div className="mb-12">
+                  <ul className="space-y-4">
+                    {t.cs1.resp.map((item, idx) => (
+                      <li key={idx} className="flex gap-4 items-start">
+                        <Icon name="check-circle" className="w-6 h-6 text-accent flex-shrink-0 mt-1" />
+                        <span className="font-body text-slate-700 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-      <div class="flex flex-col items-center justify-center h-full bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
-        <div class="relative w-56 h-56 mb-8">
-          <div class="w-full h-full rounded-full shadow-lg flex items-center justify-center" style="background: conic-gradient(#eab308 35%, #e2e8f0 0)">
-            <div class="w-44 h-44 bg-white rounded-full flex flex-col items-center justify-center shadow-inner p-4">
-              <i class="fa-solid fa-database text-3xl navy-text mb-2 opacity-50"></i>
-              <span class="font-heading text-4xl font-extrabold navy-text">~35%</span>
-              <span class="font-body text-xs text-slate-500 text-center mt-1">Faster Retrieval</span>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  {t.cs1.metrics.map((metric, idx) => (
+                    <div key={idx} className="bg-white rounded-xl shadow-lg p-8 border-t-4 border-yellow-500 text-center flex flex-col justify-center items-center transform hover:-translate-y-1 transition duration-300">
+                      <span className="font-heading text-5xl font-extrabold text-accent mb-3">{metric.val}</span>
+                      <span className="font-body text-sm font-semibold text-slate-500 uppercase tracking-wide">{metric.label}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* PAGE 3: Focus Experience 2 */}
+              <section className="min-h-screen md:ml-[35%] bg-white p-10 lg:p-20 flex flex-col justify-center border-t border-slate-200">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-12 items-center">
+                  <div>
+                    <h2 className="font-heading text-3xl font-bold text-navy-text mb-4">{t.cs2.title}</h2>
+                    <p className="font-body text-slate-600 text-lg mb-8">{t.cs2.desc}</p>
+                    <ul className="space-y-6">
+                      {t.cs2.resp.map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start">
+                          <div className="w-8 h-8 rounded-full bg-navy-solid text-white flex items-center justify-center font-bold text-sm flex-shrink-0 mt-1">{idx + 1}</div>
+                          <span className="font-body text-slate-700 leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="bg-slate-50 p-8 rounded-2xl shadow-inner border border-slate-100 flex flex-col items-center">
+                    <h3 className="font-heading text-sm font-bold text-center text-slate-400 uppercase tracking-widest mb-6">Workflow SAP MM</h3>
+                    <div className="flex flex-col w-full max-w-xs space-y-2">
+                      {t.cs2.flowSteps.map((step, idx) => (
+                        <React.Fragment key={idx}>
+                          <div className={`border-2 font-bold p-4 text-center rounded-lg shadow-sm font-heading text-sm transition hover:shadow-md ${idx === 1 || idx === 2 ? 'bg-blue-50 border-[#0B1C3D] text-[#0B1C3D]' : 'bg-white border-slate-800 text-slate-800'}`}>
+                            {step}
+                          </div>
+                          {idx < t.cs2.flowSteps.length - 1 && (
+                            <div className="flex justify-center text-slate-400">
+                              <Icon name="arrow-down" className="w-5 h-5" />
+                            </div>
+                          )}
+                        </React.Fragment>
+                      ))}
+                    </div>
+
+                    <div className="mt-8 bg-green-50 text-green-700 px-4 py-3 rounded-lg font-bold text-sm flex items-center gap-2 border border-green-200 shadow-sm">
+                      <Icon name="check-circle" className="w-5 h-5" />
+                      {t.cs2.accuracy}
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* PAGE 4: Focus Experience 3 */}
+              <section className="min-h-screen md:ml-[35%] bg-slate-50 p-10 lg:p-20 flex flex-col justify-center border-t border-slate-200">
+                <h2 className="font-heading text-3xl font-bold text-navy-text mb-12">{t.cs3.title}</h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                  <div>
+                    <p className="font-body text-slate-600 text-lg mb-8">{t.cs3.desc}</p>
+                    <ul className="space-y-4 mb-8">
+                      {t.cs3.resp.map((item, idx) => (
+                        <li key={idx} className="flex gap-4 items-start">
+                          <div className="w-2 h-2 rounded-full bg-accent mt-2.5 flex-shrink-0"></div>
+                          <span className="font-body text-slate-700 leading-relaxed">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                      <h4 className="font-heading font-bold text-navy-text text-sm mb-4 flex items-center gap-2">
+                        <Icon name="database" className="w-4 h-4 text-accent" /> {t.cs3.reportsLabel}
+                      </h4>
+                      <div className="grid grid-cols-2 gap-3">
+                        {["Project Balance Sheet", "Weekly Progress Info", "Monthly Cost Recon", "GHG/Carbon Data Basics"].map((rep, i) => (
+                          <div key={i} className="flex items-center gap-2 text-xs font-semibold text-slate-600 bg-slate-50 p-2 rounded border border-slate-100">
+                            <Icon name="database" className="w-4 h-4 text-slate-400" /> {rep}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col items-center justify-center h-full bg-white rounded-2xl p-8 shadow-sm border border-slate-100">
+                    <div className="relative w-56 h-56 mb-8">
+                      <div className="w-full h-full rounded-full shadow-lg flex items-center justify-center" 
+                           style={{ background: 'conic-gradient(#eab308 35%, #e2e8f0 0)' }}>
+                        <div className="w-44 h-44 bg-white rounded-full flex flex-col items-center justify-center shadow-inner p-4">
+                          <Icon name="database" className="w-8 h-8 text-navy-text mb-2 opacity-50" />
+                          <span className="font-heading text-4xl font-extrabold text-navy-text">~35%</span>
+                          <span className="font-body text-xs text-slate-500 text-center mt-1">Faster Retrieval</span>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="text-center font-heading font-bold text-slate-700 max-w-xs leading-relaxed text-sm">
+                      {t.cs3.chartLabel}
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* PAGE 5: Focus Experience 4 (Executive Secretarial) */}
+              <section className="min-h-screen md:ml-[35%] bg-white p-10 lg:p-20 flex flex-col justify-center border-t border-slate-200">
+                <h2 className="font-heading text-3xl font-bold text-navy-text mb-12">{t.cs4.title}</h2>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                  <div>
+                    <p className="font-body text-slate-600 text-lg mb-8">{t.cs4.desc}</p>
+                    <div className="space-y-6">
+                      {t.cs4.resp.map((item, idx) => (
+                        <div key={idx} className="flex gap-4 items-start">
+                          <div className="p-3 bg-slate-50 rounded-lg border border-slate-100 shadow-sm flex-shrink-0 text-slate-500">
+                             <Icon name={item.icon} className="w-5 h-5 text-accent" />
+                          </div>
+                          <div>
+                             <h4 className="font-heading font-bold text-navy-text text-sm mb-1">{item.title}</h4>
+                             <p className="font-body text-slate-600 text-sm leading-relaxed">{item.text}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-6">
+                     <div className="bg-navy-solid rounded-2xl p-8 shadow-xl relative overflow-hidden group transform hover:-translate-y-1 transition duration-300">
+                        <div className="absolute top-0 right-0 -mt-6 -mr-6 bg-yellow-500 w-24 h-24 rounded-full opacity-20 group-hover:scale-150 transition duration-700"></div>
+                        <Icon name="briefcase" className="w-10 h-10 text-accent mb-6 relative z-10" />
+                        <h3 className="font-heading text-2xl font-extrabold text-white leading-snug relative z-10">
+                           {t.cs4.highlight}
+                        </h3>
+                     </div>
+
+                     <div className="grid grid-cols-1 gap-4 mt-2">
+                        {t.cs4.impacts.map((impact, idx) => (
+                           <div key={idx} className="bg-yellow-50 rounded-xl p-5 border border-yellow-100 flex gap-4 items-start shadow-sm hover:shadow-md transition">
+                               <Icon name="check-circle" className="w-6 h-6 text-yellow-600 flex-shrink-0" />
+                               <div>
+                                  <h4 className="font-heading font-bold text-yellow-900 text-sm mb-1">{impact.title}</h4>
+                                  <p className="font-body text-xs text-yellow-800 leading-relaxed">{impact.text}</p>
+                               </div>
+                           </div>
+                        ))}
+                     </div>
+                  </div>
+                </div>
+              </section>
+
+              {/* PAGE 6: Education & Certifications */}
+              <section className="min-h-screen md:ml-[35%] bg-slate-50 p-10 lg:p-14 flex flex-col justify-center border-t border-slate-200">
+                <h2 className="font-heading text-3xl font-bold text-navy-text mb-4">{t.cert.title}</h2>
+                <p className="font-body text-slate-600 mb-12">{t.cert.desc}</p>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                  {/* COLUMN 1 */}
+                  <div className="space-y-8">
+                    <div>
+                        <h4 className="font-heading font-bold text-navy-text mb-4 flex items-center gap-2">
+                            <Icon name="briefcase" className="w-5 h-5 text-accent" /> {t.cert.eduTitle}
+                        </h4>
+                        <div className="space-y-4">
+                            {t.cert.eduList.map((edu, i) => (
+                                <div key={i} className="bg-slate-50 border-l-4 border-[#0B1C3D] p-4 rounded-r-lg shadow-sm">
+                                    <h5 className="font-heading font-bold text-slate-800">{edu.uni}</h5>
+                                    <p className="font-body text-xs font-semibold text-yellow-600 mb-1">{edu.period}</p>
+                                    <p className="font-body text-sm text-slate-700">{edu.level} - {edu.major}</p>
+                                    <p className="font-body text-xs text-slate-500 mt-1">IPK / GPA: {edu.gpa}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                    <div>
+                        <h4 className="font-heading font-bold text-navy-text mb-4 flex items-center gap-2">
+                            <Icon name="globe" className="w-5 h-5 text-accent" /> {t.cert.langTitle}
+                        </h4>
+                        <div className="space-y-3">
+                            {t.cert.langList.map((lang, i) => (
+                                <div key={i} className="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3">
+                                     <Icon name="globe" className="w-4 h-4 text-slate-400 mt-0.5 flex-shrink-0" />
+                                     <p className="font-body text-xs font-semibold text-slate-700 leading-relaxed">{lang}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                  </div>
+
+                  {/* COLUMN 2 */}
+                  <div className="bg-slate-50 rounded-xl border border-slate-200 p-6 h-full max-h-[700px] overflow-y-auto scrollbar-hide shadow-inner">
+                     <h4 className="font-heading font-bold text-navy-text mb-5 flex items-center gap-2 sticky top-0 bg-slate-50 pb-2 z-10">
+                        <Icon name="code" className="w-5 h-5 text-accent" /> {t.cert.techTitle}
+                     </h4>
+                     <div className="space-y-3">
+                        {t.cert.techList.map((train, i) => (
+                            <div key={i} className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition">
+                                    <Icon name="award" className="w-4 h-4 text-slate-500 group-hover:text-yellow-600" />
+                                </div>
+                                <div>
+                                   <p className="font-body text-xs font-semibold text-slate-700 leading-relaxed">{train}</p>
+                                </div>
+                            </div>
+                        ))}
+                     </div>
+                  </div>
+
+                  {/* COLUMN 3 */}
+                  <div className="bg-slate-50 rounded-xl border border-slate-200 p-6 h-full max-h-[700px] overflow-y-auto scrollbar-hide shadow-inner">
+                     <h4 className="font-heading font-bold text-navy-text mb-5 flex items-center gap-2 sticky top-0 bg-slate-50 pb-2 z-10">
+                        <Icon name="users" className="w-5 h-5 text-accent" /> {t.cert.orgTitle}
+                     </h4>
+                     <div className="space-y-3">
+                        {t.cert.orgList.map((org, i) => (
+                            <div key={i} className="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition">
+                                    <Icon name="users" className="w-4 h-4 text-slate-500 group-hover:text-yellow-600" />
+                                </div>
+                                <div>
+                                   <p className="font-body text-xs font-semibold text-slate-700 leading-relaxed">{org}</p>
+                                </div>
+                            </div>
+                        ))}
+                     </div>
+                  </div>
+                </div>
+                
+                <div className="mt-20 text-center">
+                   <p className="font-body text-sm text-slate-400">© 2026 Angre Katty Luissa. Berdasarkan Dokumen Portofolio Terverifikasi.</p>
+                </div>
+              </section>
             </div>
-          </div>
-        </div>
-        <p class="text-center font-heading font-bold text-slate-700 max-w-xs leading-relaxed text-sm">
-          <span class="id-only">Efisiensi Temu Kembali Dokumen via Cloud System</span>
-          <span class="en-only">Document Retrieval Efficiency via Cloud System</span>
-        </p>
-      </div>
-    </div>
-  </section>
+          );
+        }
 
-  <section class="min-h-screen md:ml-[35%] bg-white p-10 lg:p-20 flex flex-col justify-center border-t border-slate-200">
-    <h2 class="font-heading text-3xl font-bold navy-text mb-12">
-      <span class="id-only">Fokus Pengalaman 4: Operasional Sekretaris Eksekutif</span>
-      <span class="en-only">Experience Focus 4: Executive Secretarial Operations</span>
-    </h2>
-    
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-      <div>
-        <p class="font-body text-slate-600 text-lg mb-8 id-only">Bertanggung jawab penuh atas kelancaran aktivitas harian dan operasional administratif untuk jajaran manajemen tingkat tinggi (Vice President) pada Divisi Energi Primer dan Settlement II.</p>
-        <p class="font-body text-slate-600 text-lg mb-8 en-only">Accountable for driving administrative excellence and operational continuity for high-level management (Vice President) within the Primary Energy and Settlement II Division.</p>
-        
-        <div class="space-y-6 id-only">
-          <div class="flex gap-4 items-start">
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 shadow-sm flex-shrink-0 text-slate-500"><i class="fa-regular fa-calendar-check accent-color text-xl"></i></div>
-            <div><h4 class="font-heading font-bold navy-text text-sm mb-1">Manajemen Agenda Eksekutif</h4><p class="font-body text-slate-600 text-sm leading-relaxed">Mengatur, menjadwalkan, dan menyelaraskan kalender rapat serta agenda harian Vice President dengan tingkat fleksibilitas dan akurasi tinggi.</p></div>
-          </div>
-          <div class="flex gap-4 items-start">
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 shadow-sm flex-shrink-0 text-slate-500"><i class="fa-solid fa-users accent-color text-xl"></i></div>
-            <div><h4 class="font-heading font-bold navy-text text-sm mb-1">Koordinasi Rapat Korporat</h4><p class="font-body text-slate-600 text-sm leading-relaxed">Menyelenggarakan rapat koordinasi teknis internal maupun eksternal, termasuk menyusun risalah rapat (Minutes of Meeting).</p></div>
-          </div>
-          <div class="flex gap-4 items-start">
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 shadow-sm flex-shrink-0 text-slate-500"><i class="fa-solid fa-plane-departure accent-color text-xl"></i></div>
-            <div><h4 class="font-heading font-bold navy-text text-sm mb-1">Pengaturan Perjalanan Dinas</h4><p class="font-body text-slate-600 text-sm leading-relaxed">Mengelola seluruh logistik perjalanan dinas (travel management), akomodasi, serta penyusunan laporan pertanggungjawaban.</p></div>
-          </div>
-        </div>
-
-        <div class="space-y-6 en-only">
-          <div class="flex gap-4 items-start">
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 shadow-sm flex-shrink-0 text-slate-500"><i class="fa-regular fa-calendar-check accent-color text-xl"></i></div>
-            <div><h4 class="font-heading font-bold navy-text text-sm mb-1">Executive Calendar Management</h4><p class="font-body text-slate-600 text-sm leading-relaxed">Scheduled, organized, and streamlined complex daily calendars and corporate appointments for the Vice President.</p></div>
-          </div>
-          <div class="flex gap-4 items-start">
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 shadow-sm flex-shrink-0 text-slate-500"><i class="fa-solid fa-users accent-color text-xl"></i></div>
-            <div><h4 class="font-heading font-bold navy-text text-sm mb-1">Corporate Meeting Coordination</h4><p class="font-body text-slate-600 text-sm leading-relaxed">Moderated internal and external high-stakes technical meetings, producing comprehensive Minutes of Meetings (MoM).</p></div>
-          </div>
-          <div class="flex gap-4 items-start">
-            <div class="p-3 bg-slate-50 rounded-lg border border-slate-100 shadow-sm flex-shrink-0 text-slate-500"><i class="fa-solid fa-plane-departure accent-color text-xl"></i></div>
-            <div><h4 class="font-heading font-bold navy-text text-sm mb-1">Travel & Logistics</h4><p class="font-body text-slate-600 text-sm leading-relaxed">Managed end-to-end corporate travel itineraries, accommodations, and handled expense report reconciliations.</p></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flex flex-col gap-6">
-         <div class="navy-bg-solid rounded-2xl p-8 shadow-xl relative overflow-hidden group transform hover:-translate-y-1 transition duration-300">
-            <div class="absolute top-0 right-0 -mt-6 -mr-6 bg-yellow-500 w-24 h-24 rounded-full opacity-20 group-hover:scale-150 transition duration-700"></div>
-            <i class="fa-solid fa-briefcase accent-color text-4xl mb-6 relative z-10"></i>
-            <h3 class="font-heading text-2xl font-extrabold text-white leading-snug relative z-10 id-only">Direct Executive Support to the Vice President of Divisi Energi Primer dan Settlement II</h3>
-            <h3 class="font-heading text-2xl font-extrabold text-white leading-snug relative z-10 en-only">Direct Executive Support to the Vice President of Primary Energy and Settlement II</h3>
-         </div>
-
-         <div class="grid grid-cols-1 gap-4 mt-2 id-only">
-             <div class="bg-yellow-50 rounded-xl p-5 border border-yellow-100 flex gap-4 items-start shadow-sm hover:shadow-md transition">
-                 <i class="fa-solid fa-circle-check text-yellow-600 text-2xl flex-shrink-0 mt-1"></i>
-                 <div><h4 class="font-heading font-bold text-yellow-900 text-sm mb-1">Efisiensi Jadwal Kerja 100%</h4><p class="font-body text-xs text-yellow-800 leading-relaxed">Berhasil meminimalkan bentrokan jadwal rapat manajemen melalui konfirmasi berlapis.</p></div>
-             </div>
-             <div class="bg-yellow-50 rounded-xl p-5 border border-yellow-100 flex gap-4 items-start shadow-sm hover:shadow-md transition">
-                 <i class="fa-solid fa-circle-check text-yellow-600 text-2xl flex-shrink-0 mt-1"></i>
-                 <div><h4 class="font-heading font-bold text-yellow-900 text-sm mb-1">Arsip Risalah Rapat yang Andal</h4><p class="font-body text-xs text-yellow-800 leading-relaxed">Memastikan seluruh keputusan strategis rapat terekam dengan jelas mempercepat eksekusi.</p></div>
-             </div>
-         </div>
-         
-         <div class="grid grid-cols-1 gap-4 mt-2 en-only">
-             <div class="bg-yellow-50 rounded-xl p-5 border border-yellow-100 flex gap-4 items-start shadow-sm hover:shadow-md transition">
-                 <i class="fa-solid fa-circle-check text-yellow-600 text-2xl flex-shrink-0 mt-1"></i>
-                 <div><h4 class="font-heading font-bold text-yellow-900 text-sm mb-1">100% Schedule Efficiency</h4><p class="font-body text-xs text-yellow-800 leading-relaxed">Successfully eliminated calendar conflicts through systematic confirmation workflows.</p></div>
-             </div>
-             <div class="bg-yellow-50 rounded-xl p-5 border border-yellow-100 flex gap-4 items-start shadow-sm hover:shadow-md transition">
-                 <i class="fa-solid fa-circle-check text-yellow-600 text-2xl flex-shrink-0 mt-1"></i>
-                 <div><h4 class="font-heading font-bold text-yellow-900 text-sm mb-1">Reliable Meeting Archives</h4><p class="font-body text-xs text-yellow-800 leading-relaxed">Guaranteed that every strategic board decision was clearly documented.</p></div>
-             </div>
-         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="min-h-screen md:ml-[35%] bg-slate-50 p-10 lg:p-14 flex flex-col justify-center border-t border-slate-200">
-    <h2 class="font-heading text-3xl font-bold navy-text mb-4">
-      <span class="id-only">Pendidikan & Sertifikasi Unggulan</span>
-      <span class="en-only">Education & Top Certifications</span>
-    </h2>
-    <p class="font-body text-slate-600 mb-12">
-      <span class="id-only">Rekam jejak akademik, pelatihan teknologi, dan pengalaman organisasi.</span>
-      <span class="en-only">Academic track record, technology training, and organizational experience.</span>
-    </p>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-      
-      <div class="space-y-8">
-        <div>
-            <h4 class="font-heading font-bold navy-text mb-4 flex items-center gap-2">
-                <i class="fa-solid fa-briefcase accent-color"></i> <span class="id-only">Riwayat Pendidikan</span><span class="en-only">Education History</span>
-            </h4>
-            <div class="space-y-4">
-                <div class="bg-slate-50 border-l-4 border-[#0B1C3D] p-4 rounded-r-lg shadow-sm">
-                    <h5 class="font-heading font-bold text-slate-800">Universitas Pancasila</h5>
-                    <p class="font-body text-xs font-semibold text-yellow-600 mb-1">Sep 2017 - Feb 2020</p>
-                    <p class="font-body text-sm text-slate-700 id-only">Sarjana (S1) - Manajemen</p>
-                    <p class="font-body text-sm text-slate-700 en-only">Bachelor (S1) - Management</p>
-                    <p class="font-body text-xs text-slate-500 mt-1">IPK / GPA: 3.43 / 4.00</p>
-                </div>
-                <div class="bg-slate-50 border-l-4 border-[#0B1C3D] p-4 rounded-r-lg shadow-sm">
-                    <h5 class="font-heading font-bold text-slate-800">Universitas Indonesia</h5>
-                    <p class="font-body text-xs font-semibold text-yellow-600 mb-1">Agu 2013 - Jul 2016</p>
-                    <p class="font-body text-sm text-slate-700 id-only">Diploma III (D3) - Administrasi Perkantoran & Sekretari</p>
-                    <p class="font-body text-sm text-slate-700 en-only">Diploma (D3) - Office Administration & Secretary</p>
-                    <p class="font-body text-xs text-slate-500 mt-1">IPK / GPA: 3.39 / 4.00</p>
-                </div>
-            </div>
-        </div>
-        <div>
-            <h4 class="font-heading font-bold navy-text mb-4 flex items-center gap-2">
-                <i class="fa-solid fa-globe accent-color"></i> <span class="id-only">Bahasa</span><span class="en-only">Languages</span>
-            </h4>
-            <div class="space-y-3">
-                <div class="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3">
-                     <i class="fa-solid fa-globe text-slate-400 mt-0.5 flex-shrink-0"></i>
-                     <p class="font-body text-xs font-semibold text-slate-700 leading-relaxed id-only">IELTS Preparation Class (Skor Overall 7.0) - ELF Education (April 2023)</p>
-                     <p class="font-body text-xs font-semibold text-slate-700 leading-relaxed en-only">IELTS Preparation Class (Overall Score 7.0) - ELF Education (April 2023)</p>
-                </div>
-                <div class="bg-slate-50 p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3">
-                     <i class="fa-solid fa-globe text-slate-400 mt-0.5 flex-shrink-0"></i>
-                     <p class="font-body text-xs font-semibold text-slate-700 leading-relaxed id-only">TOEFL ITP Test (Skor 483) - Lembaga Bahasa Internasional FBI UI (Agustus 2019)</p>
-                     <p class="font-body text-xs font-semibold text-slate-700 leading-relaxed en-only">TOEFL ITP Test (Score 483) - Lembaga Bahasa Internasional FBI UI (August 2019)</p>
-                </div>
-            </div>
-        </div>
-      </div>
-
-      <div class="bg-slate-50 rounded-xl border border-slate-200 p-6 h-full max-h-[700px] overflow-y-auto scrollbar-hide shadow-inner">
-         <h4 class="font-heading font-bold navy-text mb-5 flex items-center gap-2 sticky top-0 bg-slate-50 pb-2 z-10">
-            <i class="fa-solid fa-code accent-color"></i> <span class="id-only">Teknologi & Bisnis</span><span class="en-only">Technology & Business</span>
-         </h4>
-         <div class="space-y-3">
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-award text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed">Introduction to Greenhouse Gas Accounting for IT - Cisco Networking Academy (Juli 2026)</p></div></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-award text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed">Coding Camp Software Engineering - Revou (Juli 2025)</p></div></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-award text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed">Python - KOMINFO RI (April 2024)</p></div></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-award text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed">Intro to Digital Marketing - Revou (Maret 2024)</p></div></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-award text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed">Introduction to Data Science - Cisco Networking Academy (Maret 2024)</p></div></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-award text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed">Intro to Data Analytics - Revou (Jan 2024)</p></div></div>
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-award text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed">Web Development Path (Ruby on Rails) - KOMINFO RI (Sept 2021)</p></div></div>
-         </div>
-      </div>
-
-      <div class="bg-slate-50 rounded-xl border border-slate-200 p-6 h-full max-h-[700px] overflow-y-auto scrollbar-hide shadow-inner">
-         <h4 class="font-heading font-bold navy-text mb-5 flex items-center gap-2 sticky top-0 bg-slate-50 pb-2 z-10">
-            <i class="fa-solid fa-users accent-color"></i> <span class="id-only">Pengalaman Organisasi</span><span class="en-only">Organizational Experience</span>
-         </h4>
-         <div class="space-y-3">
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-users text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed id-only">Staf Logistik dan Komunikasi, Resimen Mahasiswa Universitas Indonesia (MENWA UI) angkatan Jenawi (Maret 2015 - Agustus 2016)</p><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed en-only">Logistics and Communication Staff, Student Regiment Universitas Indonesia (MENWA UI) Jenawi (March 2015 - August 2016)</p></div></div>
-            
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-users text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed id-only">Ketua Panitia, Kuliah Umum APS "Polishing Your Professional Image" di APS UI (Oktober 2014)</p><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed en-only">Committee Chairperson, General Lecture "Polishing Your Professional Image" at APS UI (October 2014)</p></div></div>
-            
-            <div class="bg-white p-4 rounded-lg shadow-sm border border-slate-100 flex items-start gap-3 group hover:border-yellow-400 transition"><div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-yellow-100 transition"><i class="fa-solid fa-users text-slate-500 group-hover:text-yellow-600"></i></div><div><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed id-only">Staf Humas, Publikasi dan Dokumentasi, Beauty Class by Wardah - APS UI (April 2015)</p><p class="font-body text-xs font-semibold text-slate-700 leading-relaxed en-only">PR, Publication & Documentation Staff, Beauty Class by Wardah - APS UI (April 2015)</p></div></div>
-         </div>
-      </div>
-
-    </div>
-    
-    <div class="mt-20 text-center">
-       <p class="font-body text-sm text-slate-400">© 2026 Angre Katty Luissa. Berdasarkan Dokumen Portofolio Terverifikasi.</p>
-    </div>
-  </section>
-
-  <script>
-    function toggleLang() {
-      const body = document.body;
-      if (body.classList.contains('lang-id')) {
-        body.classList.remove('lang-id');
-        body.classList.add('lang-en');
-      } else {
-        body.classList.remove('lang-en');
-        body.classList.add('lang-id');
-      }
-    }
-  </script>
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
 
